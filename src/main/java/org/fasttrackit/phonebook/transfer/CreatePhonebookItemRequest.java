@@ -1,21 +1,11 @@
-package org.fasttrackit.phonebook.domain;
+package org.fasttrackit.phonebook.transfer;
 
-public class phonebookItem {
 
-    private long id;
+public class CreatePhonebookItemRequest {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private boolean done;
 
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -41,22 +31,13 @@ public class phonebookItem {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean isDone() {
-        return done;
-    }
-
-    public void setDone(boolean done) {
-        this.done = done;
-    }
 
     @Override
     public String toString() {
-        return "phonebookItem{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
+        return "CreatePhonebookItemRequest{" +
+                "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", done=" + done +
                 '}';
     }
 }
