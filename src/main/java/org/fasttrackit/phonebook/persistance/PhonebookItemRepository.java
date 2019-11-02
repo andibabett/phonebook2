@@ -20,8 +20,32 @@ public class PhonebookItemRepository {
             preparedStatement.setString(3, request.getPhoneNumber());
 
             preparedStatement.executeUpdate();
-
-
         }
     }
+
+    public void updatePhonebookItem(long id, boolean done) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "UPDATE phone_book_item SET done=? WHERE id=?";
+
+        try (Connection connection = DatabaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setLong(1, id);
+            preparedStatement.setBoolean(2, done);
+
+            preparedStatement.executeUpdate();
+        }
+    }
+
+    public void deletePhonebookItem(long id) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "DELETE FROM phone_book_item WHERE id=?";
+
+        try (Connection connection = DatabaseConfiguration.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setLong(1, id);
+
+            preparedStatement.executeUpdate();
+        }
+    }
+
+
 }

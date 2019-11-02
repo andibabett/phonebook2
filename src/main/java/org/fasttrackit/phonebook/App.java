@@ -15,6 +15,9 @@ public class App {
 
 
         PhonebookItemRepository phonebookItemRepository = new PhonebookItemRepository();
-        phonebookItemRepository.createPhonebookItem(request);
+//        phonebookItemRepository.createPhonebookItem(request);
+
+        phonebookItemRepository.updatePhonebookItem(1,true);
+        phonebookItemRepository.deletePhonebookItem(5);
     }
 }
