@@ -1,6 +1,6 @@
 package org.fasttrackit.phonebook.domain;
 
-public class phonebookItem {
+public class PhonebookItem {
 
     private long id;
     private String firstName;
