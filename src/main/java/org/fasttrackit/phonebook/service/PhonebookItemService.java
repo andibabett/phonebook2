@@ -33,5 +33,4 @@ public class PhonebookItemService {
         System.out.println("Retriving phonebook-items...");
         return phonebookItemRepository.getPhonebookItems();
     }
-
 }
