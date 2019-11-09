@@ -16,11 +16,17 @@ public class App {
         request.setPhoneNumber("0123456789");
 
 
-        PhonebookItemRepository phonebookItemRepository = new PhonebookItemRepository();
-//        phonebookItemRepository.createPhonebookItem(request);
+        request = new CreatePhonebookItemRequest();
+        request.setFirstName("andi");
+        request.setLastName("babett");
+        request.setPhoneNumber("0123456799");
 
-//        phonebookItemRepository.updatePhonebookItem(1,true);
-//        phonebookItemRepository.deletePhonebookItem(2);
+
+        PhonebookItemRepository phonebookItemRepository = new PhonebookItemRepository();
+        phonebookItemRepository.createPhonebookItem(request);
+
+        phonebookItemRepository.updatePhonebookItem(1,true);
+        phonebookItemRepository.deletePhonebookItem(2);
 
         List<PhonebookItem> phonebookItems = phonebookItemRepository.getPhonebookItems();
         System.out.println(phonebookItems);

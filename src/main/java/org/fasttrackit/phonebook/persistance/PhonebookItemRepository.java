@@ -37,6 +37,7 @@ public class PhonebookItemRepository {
         }
     }
 
+
     public void deletePhonebookItem(long id) throws SQLException, IOException, ClassNotFoundException {
         String sql = "DELETE FROM phone_book_item WHERE id=?";
 

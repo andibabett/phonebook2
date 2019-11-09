@@ -11,24 +11,23 @@ public class DatabaseConfiguration {
 
     public static Connection getConnection() throws IOException, SQLException, ClassNotFoundException {
         Properties properties = new Properties();
-        InputStream inputStream = DatabaseConfiguration.class.getClassLoader()
-                .getResourceAsStream("db.properties");
+        InputStream inputStream = DatabaseConfiguration.class.getClassLoader().getResourceAsStream("db.properties");
         try {
             properties.load(inputStream);
 
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            return DriverManager.getConnection(
+           Connection connection = DriverManager.getConnection(
                     properties.getProperty("DB_URL"),
                     properties.getProperty("DB_USERNAME"),
                     properties.getProperty("DB_PASSWORD"));
+
+            return connection;
         } finally {
 
             if (inputStream != null) {
                 inputStream.close();
             }
-
         }
     }
-
 }

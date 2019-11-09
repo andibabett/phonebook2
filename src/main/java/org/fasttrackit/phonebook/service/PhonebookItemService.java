@@ -15,12 +15,12 @@ public class PhonebookItemService {
     private PhonebookItemRepository phonebookItemRepository = new PhonebookItemRepository();
 
     public void createPhonebookItem(CreatePhonebookItemRequest request) throws SQLException, IOException, ClassNotFoundException {
-        System.out.println("Creating phonebook-item:" + request);
+        System.out.println("Creating phone_book_item:" + request);
         phonebookItemRepository.createPhonebookItem(request);
     }
 
     public void updatePhonebookItem(long id, UpdatePhonebookItemRequest request) throws SQLException, IOException, ClassNotFoundException {
-        System.out.println("Updating phonebook-item:" + request);
+        System.out.println("Updating phone_book_item:" + request);
         phonebookItemRepository.updatePhonebookItem(id, request.isDone());
     }
 
