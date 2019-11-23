@@ -14,6 +14,9 @@ public class PhonebookItemService {
 
     private PhonebookItemRepository phonebookItemRepository = new PhonebookItemRepository();
 
+    public PhonebookItemService() throws SQLException, IOException, ClassNotFoundException {
+    }
+
     public void createPhonebookItem(CreatePhonebookItemRequest request) throws SQLException, IOException, ClassNotFoundException {
         System.out.println("Creating phone_book_item:" + request);
         phonebookItemRepository.createPhonebookItem(request);
@@ -29,8 +32,18 @@ public class PhonebookItemService {
         phonebookItemRepository.deletePhonebookItem(id);
     }
 
+    public void deleteMoreContacts (long[] id) throws SQLException, IOException, ClassNotFoundException {
+        System.out.println("Deleting contacts...");
+        phonebookItemRepository.deleteMoreContacts(id);
+    }
+
     public List<PhonebookItem> getPhonebookItems() throws SQLException, IOException, ClassNotFoundException {
         System.out.println("Retriving phonebook-items...");
         return phonebookItemRepository.getPhonebookItems();
+    }
+
+    public List <PhonebookItem> getPhonebookItemByName (String firstName, String lastName) throws SQLException, IOException, ClassNotFoundException {
+        System.out.println("Retrivering phonebook...");
+        return phonebookItemRepository.getPhonebookItemsByName(firstName,lastName);
     }
 }

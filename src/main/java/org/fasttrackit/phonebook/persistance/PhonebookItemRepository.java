@@ -1,5 +1,6 @@
 package org.fasttrackit.phonebook.persistance;
 
+//import jdk.jfr.internal.tool.PrettyWriter;
 import org.fasttrackit.phonebook.domain.PhonebookItem;
 import org.fasttrackit.phonebook.transfer.CreatePhonebookItemRequest;
 
@@ -9,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PhonebookItemRepository {
+
+    public PhonebookItemRepository() throws SQLException, IOException, ClassNotFoundException {
+    }
 
     public void createPhonebookItem(CreatePhonebookItemRequest request) throws SQLException, IOException, ClassNotFoundException {
         String sql = "INSERT INTO phone_book_item (firstName, lastName, phoneNumber) VALUES (?, ?, ?)";
@@ -71,5 +75,39 @@ public class PhonebookItemRepository {
             }
         }
         return phonebookItems;
+    }
+
+    public List<PhonebookItem> getPhonebookItemsByName(String firstName, String lastName) throws SQLException, IOException, ClassNotFoundException {
+
+        String sql = "SELECT id, firstName, lastName, phoneNumber FROM phone_book_item";
+
+        List<PhonebookItem> phonebookItems = new ArrayList<>();
+
+        try (Connection connection = DatabaseConfiguration.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            while (resultSet.next()) {
+                PhonebookItem phonebookItem = new PhonebookItem();
+                phonebookItem.setId(resultSet.getLong("id"));
+                phonebookItem.setFirstName(resultSet.getString("firstName"));
+                phonebookItem.setLastName(resultSet.getString("lastName"));
+                phonebookItem.setPhoneNumber(resultSet.getString("phoneNumber"));
+                phonebookItem.setDone(resultSet.getBoolean("done"));
+                if (phonebookItem.getFirstName().equals(lastName) | phonebookItem.getLastName().equals(firstName))
+                    phonebookItems.add(phonebookItem);
+            }
+        }
+        return phonebookItems;
+    }
+
+    public void deleteMoreContacts(long[] id) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "DELETE FROM phone_book_item WHERE id=?";
+        try (Connection connection = DatabaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
+            for (int i = 0; i < id.length; i++) {
+                preparedStatement.setLong(1, id[i]);
+                preparedStatement.executeUpdate();
+            }
+        }
     }
 }
