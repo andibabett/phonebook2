@@ -15,12 +15,10 @@ public class App {
         request.setLastName("JDBC");
         request.setPhoneNumber("0123456789");
 
-
         request = new CreatePhonebookItemRequest();
         request.setFirstName("andi");
         request.setLastName("babett");
         request.setPhoneNumber("0123456799");
-
 
         PhonebookItemRepository phonebookItemRepository = new PhonebookItemRepository();
         phonebookItemRepository.createPhonebookItem(request);
@@ -28,7 +26,7 @@ public class App {
         phonebookItemRepository.updatePhonebookItem(1,true);
         phonebookItemRepository.deletePhonebookItem(2);
 
-        List<PhonebookItem> phonebookItems = phonebookItemRepository.getPhonebookItems();
+        List <PhonebookItem> phonebookItems = phonebookItemRepository.getPhonebookItems();
         System.out.println(phonebookItems);
     }
 }
