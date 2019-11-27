@@ -11,8 +11,7 @@ import java.util.List;
 
 public class PhonebookItemRepository {
 
-    public PhonebookItemRepository() throws SQLException, IOException, ClassNotFoundException {
-    }
+
 
     public void createPhonebookItem(CreatePhonebookItemRequest request) throws SQLException, IOException, ClassNotFoundException {
         String sql = "INSERT INTO phone_book_item (firstName, lastName, phoneNumber) VALUES (?, ?, ?)";

@@ -107,4 +107,12 @@ public class PhonebookItemServlet extends HttpServlet {
             resp.sendError(500, "Internal Server Error:" + e.getMessage());
         }
     }
+
+    private void setAccessControlHeaders(HttpServletResponse resp){
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+        resp.setHeader("Access-Control-Allow-Headers", "content-type");
+
+    }
+
 }

@@ -8,9 +8,9 @@
     <artifactId>phonebook2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>phonebook2</name>
+    <name>Phonebook</name>
     <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <url>jdbc:mysql://localHost:3306/phone_book</url>
 
     <packaging>war</packaging>
 
